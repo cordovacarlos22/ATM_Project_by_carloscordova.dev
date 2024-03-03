@@ -26,33 +26,35 @@
 
       <section class="atm-main-container">
         <div class="screen">
-          <h1>Bienvenido</h1>
-          <h5>Ingresa tu numero de cuenta</h5>
+          <h1 class="title-screen">Bienvenido</h1>
+          <h5 class="sub-tittle">Ingresa tu numero de cuenta</h5>
+          <form class="form">
+            <input class="accountNumber" type="text" value="" >
+          </form>
         </div>
         <div class="card-logo">
           <img src="./img//card-icon.svg" alt="card logo">
         </div>
         <div class="atm-keyboard-container">
           <form class="keyboard-left-container">
-            <input name="btn-1" type="button" class="btn-1" value="1">
-            <input name="btn-2" type="button" class="btn-2" value="2">
-            <input name="btn-3" type="button" class="btn-3" value="3">
-            <input name="btn-4" type="button" class="btn-4" value="4">
-            <input name="btn-5" type="button" class="btn-5" value="5">
-            <input name="btn-6" type="button" class="btn-6" value="6">
-            <input name="btn-7" type="button" class="btn-7" value="7">
-            <input name="btn-8" type="button" class="btn-8" value="8">
-            <input name="btn-9" type="button" class="btn-9" value="9">
-            <input name="btn-resta" type="button" class="btn-resta" value="-">
-            <input name="btn-0" type="button" class="btn-0" value="0">
-            <input name="btn-suma" type="button" class="btn-suma" value="+">
+            <input name="btn-1" type="button" class="btn-1 number" value="1">
+            <input name="btn-2" type="button" class="btn-2 number" value="2">
+            <input name="btn-3" type="button" class="btn-3 number" value="3">
+            <input name="btn-4" type="button" class="btn-4 number" value="4">
+            <input name="btn-5" type="button" class="btn-5 number" value="5">
+            <input name="btn-6" type="button" class="btn-6 number" value="6">
+            <input name="btn-7" type="button" class="btn-7 number" value="7">
+            <input name="btn-8" type="button" class="btn-8 number" value="8">
+            <input name="btn-9" type="button" class="btn-9 number" value="9">
+            <input name="btn-resta" type="button" class="btn-resta operator" value="-">
+            <input name="btn-0" type="button" class="btn-0 number" value="0">
+            <input name="btn-suma" type="button" class="btn-suma operator" value="+">
           </form>
           <form class="keyboard-right-container">
-            <input type="button" class="btn-retiro" value="Retiro">
-            <input type="button" class="btn-deposito" value="Deposito">
-            <input type="button" class="btn-continuar" value="Continuar">
-            <input type="button" class="btn-cancelar" value="Cancelar">
-
+            <input type="button" class="btn-retiro operator" value="Retiro">
+            <input type="button" class="btn-deposito operator" value="Deposito">
+            <input type="button" class="btn-continuar operator" value="Continuar">
+            <input type="button" class="btn-cancelar operator" value="Cancelar">
           </form>
         </div>
       </section>
