@@ -9,6 +9,7 @@ body {
 
 .main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -44,4 +45,37 @@ body {
 
 
 /* * main-wrapper-atm */
+.main-wrapper-atm{
+  display: flex;
+  width: 800px;
+  border: 1px solid red;
+  justify-content: center;
+}
 
+.main-wrapper-atm{
+  display: flex;
+  justify-content: center;
+  width:800px;
+  background-color: #C0C0C0;
+}
+
+.atm-main-container{
+  position: relative;
+  border-radius: 5px;
+  margin-top: 3rem;
+  max-width: 2rem ;
+  min-width: 75%;
+  min-height: 75%;
+  background-color: #959595 ;
+}
+.screen{
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-width: 460px;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 5px;  
+}
