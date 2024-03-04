@@ -18,9 +18,23 @@ const btnDeposito = document.querySelector('.btn-deposito');
 const btnContinuar = document.querySelector('.btn-continuar');
 const btnCancelar = document.querySelector('.btn-cancelar');
 const screen = document.querySelector('.screen');
+const number = Array.from(document.querySelectorAll('.number'));
+console.log('numbers',number)
 //! ------===EVENT LISTENER ===-----
-window.addEventListener('load', check)
+window.addEventListener('load', check);
 
+number.map(button =>{
+  button.addEventListener('click',(e)=>{
+    // console.log(e.target.value); // should return value of input numbers 
+    accountNumber.value += e.target.value;
+
+  });
+});
+
+
+function handleDisplay(e){
+  
+}
 function check() {
   btnContinuar.addEventListener('click', handleAcountNum)
 
@@ -34,9 +48,6 @@ function handleAcountNum(e) {
       <h1>User Found</h1>
       <h2>Selecccion una opcion : Retiro o Deposito</h2>
       ` 
-
-
-    
   }else {
     screen.innerHTML = ""
     screen.innerHTML += `
@@ -44,4 +55,6 @@ function handleAcountNum(e) {
       <h2>Verificar numero de cuenta e inter de nuevo </h2>
       ` 
   }
-}
+};
+
+
