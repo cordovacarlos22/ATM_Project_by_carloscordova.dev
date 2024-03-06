@@ -20,32 +20,78 @@ const btnCancelar = document.querySelector('.btn-cancelar');
 const screen = document.querySelector('.screen');
 const number = Array.from(document.querySelectorAll('.number'));
 const operator = Array.from(document.querySelectorAll('.operators'));
-let user = '';
+let login = '';
+let index = 0;
+let retiroAmount = 0;
+let bankUsers = [
+  {
+    accoutId: '1234',
+    name: 'Carlos',
+    middleName: 'Manuel',
+    lastname: 'Ortiz',
+    accoutBalance: 200,
+  },
+  {
+    accoutId: '1235',
+    name: 'Ana',
+    middleName: 'Maria',
+    lastname: 'Guerra',
+    accoutBalance: 500,
+  },
+  {
+    accoutId: '12355',
+    name: 'Ana',
+    middleName: 'Maria',
+    lastname: 'Guerra',
+    accoutBalance: 600,
+  },
+  {
+    accoutId: '01023',
+    name: 'German',
+    middleName: 'Manuel',
+    lastname: 'Hernandez',
+    accoutBalance: 60,
+  },
+
+]
+
+
 console.log('numbers', number)
 //! ------===EVENT LISTENER ===-----
-window.addEventListener('load', check);
-number.map(button => {
-  button.addEventListener('click', handleDisplay);
-});
+window.addEventListener('load', handleEventListers);
 
 
-function check() {
+
+function handleEventListers() {
   btnRetiro.addEventListener('click', handleRetiro);
   btnDeposito.addEventListener('click', handleDeposito);
   btnContinuar.addEventListener('click', handleAcountNum);
   btnCancelar.addEventListener('click', handleCancelar);
+  number.map(button => {
+    button.addEventListener('click', handleDisplay);
+  });
+
+
+
 };
 
 function handleAcountNum(e) {
   e.preventDefault()
-  if (accountNumber.value == 1234) {
-    user = 'login'
-    screen.innerHTML = ""
-    screen.innerHTML += `
-      <h1>User Found</h1>
+
+  for (let index = 0; index < bankUsers.length; index++) {
+    if (accountNumber.value == bankUsers[index].accoutId) {
+      login = 'login'
+      screen.innerHTML = ""
+      screen.innerHTML += `
+      <h1>Bienvenido ${bankUsers[index].name} ${bankUsers[index].lastname} </h1>
+      <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
       <h2>Selecccion una opcion : Retiro o Deposito</h2>
       `
-  } else {
+    }
+
+  };
+  if (login == '') {
+
     screen.innerHTML = ""
     screen.innerHTML += `
       <h1>User Found not found </h1>
@@ -54,31 +100,41 @@ function handleAcountNum(e) {
     setTimeout(() => {
       location.reload();
     }, "3000");
+
   }
+
+
 };
 
 function handleDisplay(e) {
   accountNumber.value += e.target.value;
 };
 
-function handleRetiro() {
-  if (user == 'login'){
-    screen.innerHTML = ""
-    screen.innerHTML += `
-      <h1>Ingresar monto a retirar </h1>
-      <input class="accountNumber" type="text" value='' >
+function handleRetiro(e) {
+  for (let index = 0; index < bankUsers.length; index++) {
+    if (login == 'login' && accountNumber.value == bankUsers[index].accoutId) {
+      accountNumber.value = ''
+      screen.innerHTML = ""
+      screen.innerHTML += `
+      <h1>  ${bankUsers[index].name} por favor Ingresar monto a retirar </h1>
+      <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
+
       `
-      console.log(accountNumber)
-  }else {
+
+    }
+
+  }
+  if (login == '') {
     screen.innerHTML = ""
     screen.innerHTML += `
       <h1>Por favor ingresar numero de cuenta</h1>
+      
       `
     setTimeout(() => {
       location.reload();
     }, "2000");
   }
- 
+
 }
 
 function handleDeposito() {
@@ -87,9 +143,16 @@ function handleDeposito() {
 
 function handleCancelar() {
 
-  user = '';
+  login = '';
   accountNumber.value = ''
-  location.reload();
+  screen.innerHTML = ""
+  screen.innerHTML += `
+      <h1>Has cancelado la transaccion con exito! </h1>
+      
+      `
+  setTimeout(() => {
+    location.reload();
+  }, "2000");
 
 }
 
