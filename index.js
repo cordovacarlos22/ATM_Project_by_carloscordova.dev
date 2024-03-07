@@ -21,15 +21,16 @@ const screen = document.querySelector('.screen');
 const number = Array.from(document.querySelectorAll('.number'));
 const operator = Array.from(document.querySelectorAll('.operators'));
 let login = '';
-let index = 0;
-let retiroAmount = 0;
+let userIndex = 0;
+let retiro = false;
+let deposito = false;
 let bankUsers = [
   {
     accoutId: '1234',
     name: 'Carlos',
     middleName: 'Manuel',
     lastname: 'Ortiz',
-    accoutBalance: 200,
+    accoutBalance: 10,
   },
   {
     accoutId: '1235',
@@ -55,8 +56,6 @@ let bankUsers = [
 
 ]
 
-
-console.log('numbers', number)
 //! ------===EVENT LISTENER ===-----
 window.addEventListener('load', handleEventListers);
 
@@ -68,26 +67,30 @@ function handleEventListers() {
   btnContinuar.addEventListener('click', handleAcountNum);
   btnCancelar.addEventListener('click', handleCancelar);
   number.map(button => {
-    button.addEventListener('click', handleDisplay);
+    button.addEventListener('click', handleDisplay, handleAcountNum);
   });
-
-
-
 };
+
+function handleDisplay(e) {
+  accountNumber.value += e.target.value;
+  
+};
+
 
 function handleAcountNum(e) {
   e.preventDefault()
-
+ 
   for (let index = 0; index < bankUsers.length; index++) {
     if (accountNumber.value == bankUsers[index].accoutId) {
+      userIndex = index;
       login = 'login'
       screen.innerHTML = ""
       screen.innerHTML += `
       <h1>Bienvenido ${bankUsers[index].name} ${bankUsers[index].lastname} </h1>
       <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
       <h2>Selecccion una opcion : Retiro o Deposito</h2>
-      `
-    }
+      
+      ` }
 
   };
   if (login == '') {
@@ -101,27 +104,58 @@ function handleAcountNum(e) {
       location.reload();
     }, "3000");
 
-  }
+  };
+  if (retiro == true && login == 'login' ) {
+    if (bankUsers[userIndex].accoutBalance < 10) {
+      screen.innerHTML = ""
+      screen.innerHTML += `
+      <h1>  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
+      <h2>Su  porque se  balance es de  menor a $ 10.00  o su cuenta estaria en numeros negativos</h2>
+      `
+    }else{
+      if (bankUsers[userIndex].accoutBalance - accountNumber.value < 0) {
 
+        screen.innerHTML = ""
+        screen.innerHTML += `
+      <h1>  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
+      <h4>Su  porque  su cuenta estaria en numeros negativos lo sentimos!</h4>
+      `
 
+      } else {
+        screen.innerHTML = ""
+        screen.innerHTML += `
+      <h1>  ${bankUsers[userIndex].name} su retiro fue  exitoso</h1>
+      <h2>Su  Nuevo balance es de :$${bankUsers[userIndex].accoutBalance -= accountNumber.value}</h2>
+      `
+        userIndex = 0;
+        retiro = false;
+        setTimeout(() => {
+          location.reload();
+        }, "4000");
+      }
+    };
+    
+    
+  } ;
+ 
 };
 
-function handleDisplay(e) {
-  accountNumber.value += e.target.value;
-};
 
-function handleRetiro(e) {
+
+function handleRetiro() {
   for (let index = 0; index < bankUsers.length; index++) {
     if (login == 'login' && accountNumber.value == bankUsers[index].accoutId) {
+      retiro = true
       accountNumber.value = ''
       screen.innerHTML = ""
       screen.innerHTML += `
       <h1>  ${bankUsers[index].name} por favor Ingresar monto a retirar </h1>
       <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
-
       `
+      
+    };
 
-    }
+    
 
   }
   if (login == '') {
@@ -133,13 +167,15 @@ function handleRetiro(e) {
     setTimeout(() => {
       location.reload();
     }, "2000");
-  }
+  };
 
+};
+
+function handleDeposito(e) {
+ 
 }
 
-function handleDeposito() {
 
-}
 
 function handleCancelar() {
 
