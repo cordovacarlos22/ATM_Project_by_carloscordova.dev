@@ -79,8 +79,8 @@ function handleAcountNum(e) {
       // prints the login screen
       screen.innerHTML += `
       <h1>Bienvenido ${bankUsers[index].name} ${bankUsers[index].lastname} </h1>
-      <h2> balance es de $${bankUsers[index].accoutBalance}</h2>
-      <h2>Selecccion una opcion : Retiro o Deposito</h2>
+      <h2> su balance es de: <span class="account-balance">$${bankUsers[index].accoutBalance}</span></h2>
+      <h2>Selecccion una opcion : <span class="retiro-name">Retiro</span> o <span class="deposito-name">Deposito</span></h2>
       
       ` }
 
@@ -91,8 +91,8 @@ function handleAcountNum(e) {
     screen.innerHTML = "" // clears the screen
     // prints the screen  
     screen.innerHTML += `
-      <h1>Numero de Cuenta no encontrado</h1>
-      <h2>Verificar numero de cuenta e inter de nuevo !</h2>
+      <h1 style="color:red;">Numero de Cuenta no encontrado</h1>
+      <h4>Verificar numero de cuenta e intendar de nuevo !</h4>
       `
       // wait for 3 seconds then reloads the page
     setTimeout(() => {
@@ -107,8 +107,8 @@ function handleAcountNum(e) {
       screen.innerHTML = "" // clears the screen
       // prints the screen
       screen.innerHTML += `
-      <h1>  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
-      <h2>Su  porque se  balance es de  menor a $ 10.00  o su cuenta estaria en numeros negativos</h2>
+      <h1 style="color:red;">  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
+      <h2>Su  porque se  balance es de  menor a <span style="color:red;">$ 10.00</span>  o su cuenta estaria en numeros negativos</h2>
       `
     } else {
       // if user data bankUser balance is < 0
@@ -117,7 +117,7 @@ function handleAcountNum(e) {
         screen.innerHTML = "" // clears the screen
         // prints the screen
         screen.innerHTML += `
-      <h1>  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
+      <h1 style="color:red;">  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
       <h4>Su  porque  su cuenta estaria en numeros negativos lo sentimos!</h4>
       `
 
@@ -126,15 +126,15 @@ function handleAcountNum(e) {
         screen.innerHTML = "" // clears the screen 
         // prints the screen
         screen.innerHTML += `
-      <h1>  ${bankUsers[userIndex].name} su retiro fue  exitoso</h1>
-      <h2>Su  Nuevo balance es de :$${bankUsers[userIndex].accoutBalance -= accountNumber.value}</h2>
+      <h1 style="color:green;">  ${bankUsers[userIndex].name} su retiro fue  exitoso</h1>
+      <h3>Su  Nuevo balance es de :<span class="account-balance">$${bankUsers[userIndex].accoutBalance -= accountNumber.value}</span></h3>
       `
         userIndex = 0; // sets user index to 0
         retiro = false; // sets retiro status to false
         // wait for 4 seconds then reloads the page
         setTimeout(() => {
           location.reload();
-        }, "4000");
+        }, "3000");
       }
     };
 
@@ -153,16 +153,16 @@ function handleAcountNum(e) {
       screen.innerHTML = "" // clears the screen 
       // prints the screen 
       screen.innerHTML += ` 
-      <h1>  ${bankUsers[userIndex].name} su retiro fue  exitoso</h1>
+      <h1 style="color:green;">  ${bankUsers[userIndex].name} su retiro fue  exitoso</h1>
       <h2>Su  Nuevo balance es de :$${bankUsers[userIndex].accoutBalance += Number(accountNumber.value)}</h2>
       `
 
       userIndex = 0; // sets user index to 0
       deposito = false; // sets deposito status to false
-      // wait for 4 seconds then reloads the page
+      // wait for 3 seconds then reloads the page
       setTimeout(() => {
         location.reload();
-      }, "4000");
+      }, "3000");
     };
   };;
 
@@ -183,7 +183,7 @@ function handleRetiro() {
       //prints the login screen
       screen.innerHTML += `
       <h1>  ${bankUsers[index].name} por favor Ingresar monto a retirar </h1>
-      <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
+      <h2>Su balance es de:  <spa class="account-balance">$${bankUsers[index].accoutBalance}</spa></h2>
       `
 
     };
@@ -218,7 +218,7 @@ function handleDeposito() {
       // prints the login screen
       screen.innerHTML += `
       <h1>  ${bankUsers[index].name} por favor Ingresar monto a depositar </h1>
-      <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
+      <h2>Su balance es de: <span class="account-balance">$${bankUsers[index].accoutBalance}</span></h2>
       `
 
     };
@@ -246,11 +246,11 @@ function handleDeposito() {
 // handler for the cancel button
 function handleCancelar() {
 // if user not logged in & accountNumber.value!= ''
-  if (!login && accountNumber.value != '') {
+  if (login == '' && accountNumber.value == '') {
     screen.innerHTML = "" // clears the screen
     // prints the login screen
     screen.innerHTML += `
-      <h1>No hay nada que cancelar ! </h1>
+      <h1 style="color:red;">No hay nada que cancelar ! </h1>
       
       `
 
@@ -265,7 +265,7 @@ function handleCancelar() {
     screen.innerHTML = "" // clears the screen
     // prints the login screen
     screen.innerHTML += `
-      <h1 class="cancelado-title" >Has cancelado la transaccion con exito! </h1>
+      <h1 style="color:green;" >Has cancelado la transaccion con exito! </h1>
       
       `
       // wait for 2 seconds then reloads the page
