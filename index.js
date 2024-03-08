@@ -73,13 +73,13 @@ function handleEventListers() {
 
 function handleDisplay(e) {
   accountNumber.value += e.target.value;
-  
+
 };
 
 
 function handleAcountNum(e) {
   e.preventDefault()
- 
+
   for (let index = 0; index < bankUsers.length; index++) {
     if (accountNumber.value == bankUsers[index].accoutId) {
       userIndex = index;
@@ -87,7 +87,7 @@ function handleAcountNum(e) {
       screen.innerHTML = ""
       screen.innerHTML += `
       <h1>Bienvenido ${bankUsers[index].name} ${bankUsers[index].lastname} </h1>
-      <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
+      <h2> balance es de $${bankUsers[index].accoutBalance}</h2>
       <h2>Selecccion una opcion : Retiro o Deposito</h2>
       
       ` }
@@ -97,22 +97,22 @@ function handleAcountNum(e) {
 
     screen.innerHTML = ""
     screen.innerHTML += `
-      <h1>User Found not found </h1>
-      <h2>Verificar numero de cuenta e inter de nuevo </h2>
+      <h1>Numero de Cuenta no encontrado</h1>
+      <h2>Verificar numero de cuenta e inter de nuevo !</h2>
       `
     setTimeout(() => {
       location.reload();
     }, "3000");
 
   };
-  if (retiro == true && login == 'login' ) {
+  if (retiro == true && login == 'login') {
     if (bankUsers[userIndex].accoutBalance < 10) {
       screen.innerHTML = ""
       screen.innerHTML += `
       <h1>  ${bankUsers[userIndex].name} su retiro no pudo ser efectuado</h1>
       <h2>Su  porque se  balance es de  menor a $ 10.00  o su cuenta estaria en numeros negativos</h2>
       `
-    }else{
+    } else {
       if (bankUsers[userIndex].accoutBalance - accountNumber.value < 0) {
 
         screen.innerHTML = ""
@@ -134,10 +134,31 @@ function handleAcountNum(e) {
         }, "4000");
       }
     };
-    
-    
-  } ;
+
+
+  } else if (deposito == true && login == 'login') {
+    if (bankUsers[userIndex].accoutBalance + Number(accountNumber.value) > 990 || bankUsers[userIndex].accoutBalance > 990) {
+      screen.innerHTML = ""
+      screen.innerHTML += `
+      <h1>  ${bankUsers[userIndex].name} su deposito no pudo ser efectuado</h1>
+      <h2>  porque se  balance es de  mayo a $ 990.00  o su cuenta estariapor arriva del deposito mayor a 990</h2>
+      `
+    } else {
+      screen.innerHTML = ""
+      screen.innerHTML += `
+      <h1>  ${bankUsers[userIndex].name} su retiro fue  exitoso</h1>
+      <h2>Su  Nuevo balance es de :$${bankUsers[userIndex].accoutBalance += Number(accountNumber.value)}</h2>
+      `
+      userIndex = 0;
+      deposito = false;
+      setTimeout(() => {
+        location.reload();
+      }, "4000");
+    };
+  };;
+
  
+
 };
 
 
@@ -152,10 +173,10 @@ function handleRetiro() {
       <h1>  ${bankUsers[index].name} por favor Ingresar monto a retirar </h1>
       <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
       `
-      
+
     };
 
-    
+
 
   }
   if (login == '') {
@@ -171,25 +192,60 @@ function handleRetiro() {
 
 };
 
-function handleDeposito(e) {
- 
+function handleDeposito() {
+
+  for (let index = 0; index < bankUsers.length; index++) {
+    if (login == 'login' && accountNumber.value == bankUsers[index].accoutId) {
+      deposito = true
+      accountNumber.value = ''
+      screen.innerHTML = ""
+      screen.innerHTML += `
+      <h1>  ${bankUsers[index].name} por favor Ingresar monto a depositar </h1>
+      <h2>Su balance es de $${bankUsers[index].accoutBalance}</h2>
+      `
+
+    };
+
+
+
+  }
+  if (login == '') {
+    screen.innerHTML = ""
+    screen.innerHTML += `
+      <h1>Por favor ingresar numero de cuenta</h1>
+      
+      `
+    setTimeout(() => {
+      location.reload();
+    }, "2000");
+  };
 }
 
 
 
 function handleCancelar() {
 
-  login = '';
-  accountNumber.value = ''
-  screen.innerHTML = ""
-  screen.innerHTML += `
+  if (!login) {
+    screen.innerHTML = ""
+    screen.innerHTML += `
+      <h1>No hay nada que cancelar ! </h1>
+      
+      `
+    setTimeout(() => {
+      location.reload();
+    }, "2000");
+  }else{
+    login = '';
+    accountNumber.value = ''
+    screen.innerHTML = ""
+    screen.innerHTML += `
       <h1>Has cancelado la transaccion con exito! </h1>
       
       `
-  setTimeout(() => {
-    location.reload();
-  }, "2000");
+    setTimeout(() => {
+      location.reload();
+    }, "2000");
+  }
 
 }
-
 
