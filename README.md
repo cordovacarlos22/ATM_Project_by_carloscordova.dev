@@ -11,7 +11,7 @@ Goals: to practice DOM manipulation,funtions,conditional,variable,etc in Javascr
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/sx7KySbz/Screenshot-2024-03-03-at-08-28-05.png)
+![App Screenshot](https://i.postimg.cc/G23zt9TV/temp-Image-P0ze-IW.avif)
 
 ## Tech Stack
 
