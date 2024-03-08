@@ -1,25 +1,14 @@
 //! ----==== SELECTORS ===-------
-const btnCero = document.querySelector('.btn-0').value;
-const btnOne = document.querySelector('.btn-1').value;
-const btnTwo = document.querySelector('.btn-2').value;
-const btnThre = document.querySelector('.btn-3').value;
-const btnFour = document.querySelector('.btn-4').value;
-const btnFive = document.querySelector('.btn-5').value;
-const btnSix = document.querySelector('.btn-6').value;
-const btnSevent = document.querySelector('.btn-7').value;
-const btnEight = document.querySelector('.btn-8').value;
-const btnNine = document.querySelector('.btn-9').value;
 const btnResta = document.querySelector('.btn-resta ').value;
 const btnSuma = document.querySelector('.btn-suma').value;
 const accountNumber = document.querySelector('.accountNumber');
-const form = document.querySelector('.form'); // selects from
-const btnRetiro = document.querySelector('.btn-retiro');
+
+ const btnRetiro = document.querySelector('.btn-retiro');
 const btnDeposito = document.querySelector('.btn-deposito');
 const btnContinuar = document.querySelector('.btn-continuar');
 const btnCancelar = document.querySelector('.btn-cancelar');
 const screen = document.querySelector('.screen');
 const number = Array.from(document.querySelectorAll('.number'));
-const operator = Array.from(document.querySelectorAll('.operators'));
 let login = '';
 let userIndex = 0;
 let retiro = false;
@@ -239,7 +228,7 @@ function handleCancelar() {
     accountNumber.value = ''
     screen.innerHTML = ""
     screen.innerHTML += `
-      <h1>Has cancelado la transaccion con exito! </h1>
+      <h1 class="cancelado-title" >Has cancelado la transaccion con exito! </h1>
       
       `
     setTimeout(() => {
