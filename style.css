@@ -200,3 +200,16 @@ body {
   background-color: red;
 }
 
+/* ! JS classes */
+.account-balance{
+  color:red;
+}
+
+.retiro-name{
+  color: orange;
+}
+
+.deposito-name{
+  color: blue;
+}
+
