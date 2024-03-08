@@ -225,7 +225,7 @@ function handleDeposito() {
 
 function handleCancelar() {
 
-  if (!login) {
+  if (!login && accountNumber.value != '') {
     screen.innerHTML = ""
     screen.innerHTML += `
       <h1>No hay nada que cancelar ! </h1>
