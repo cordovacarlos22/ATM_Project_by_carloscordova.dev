@@ -1,7 +1,7 @@
 //! ----==== Global SELECTORS ===-------
 
 const accountNumber = document.querySelector('.accountNumber'); // account number input && account retiro  && deposito handler
- const btnRetiro = document.querySelector('.btn-retiro'); // retiro button 
+const btnRetiro = document.querySelector('.btn-retiro'); // retiro button 
 const btnDeposito = document.querySelector('.btn-deposito'); // deposito button
 const btnContinuar = document.querySelector('.btn-continuar');  // Continuar button
 const btnCancelar = document.querySelector('.btn-cancelar');    // Cancelar button
@@ -94,7 +94,7 @@ function handleAcountNum(e) {
       <h1 style="color:red;">Numero de Cuenta no encontrado</h1>
       <h4>Verificar numero de cuenta e intendar de nuevo !</h4>
       `
-      // wait for 3 seconds then reloads the page
+    // wait for 3 seconds then reloads the page
     setTimeout(() => {
       location.reload();
     }, "3000");
@@ -166,14 +166,14 @@ function handleAcountNum(e) {
     };
   };;
 
- 
+
 
 };
 
 
 // check if user logged in successfully and handles user data print
 function handleRetiro() {
-    // trys to find the user in the bankUsers array accountNumber.value
+  // trys to find the user in the bankUsers array accountNumber.value
   for (let index = 0; index < bankUsers.length; index++) {
     // value of the account number input and check if user logged in
     if (login == 'login' && accountNumber.value == bankUsers[index].accoutId) {
@@ -199,7 +199,7 @@ function handleRetiro() {
       <h1>Por favor ingresar numero de cuenta</h1>
       
       `
-      // wait for 3 seconds then reloads the page
+    // wait for 3 seconds then reloads the page
     setTimeout(() => {
       location.reload();
     }, "3000");
@@ -235,7 +235,7 @@ function handleDeposito() {
       
       `
 
-      // wait for  seconds then reloads the page
+    // wait for  seconds then reloads the page
     setTimeout(() => {
       location.reload();
     }, "3000");
@@ -245,7 +245,7 @@ function handleDeposito() {
 
 // handler for the cancel button
 function handleCancelar() {
-// if user not logged in & accountNumber.value!= ''
+  // if user not logged in & accountNumber.value!= ''
   if (login == '' && accountNumber.value == '') {
     screen.innerHTML = "" // clears the screen
     // prints the login screen
@@ -254,11 +254,11 @@ function handleCancelar() {
       
       `
 
-      // wait for 2 seconds then reloads the page
+    // wait for 2 seconds then reloads the page
     setTimeout(() => {
       location.reload();
     }, "2000");
-  }else{
+  } else {
 
     login = '';// sets login status to ''
     accountNumber.value = '' // sets account number value to ''
@@ -268,11 +268,10 @@ function handleCancelar() {
       <h1 style="color:green;" >Has cancelado la transaccion con exito! </h1>
       
       `
-      // wait for 2 seconds then reloads the page
+    // wait for 2 seconds then reloads the page
     setTimeout(() => {
       location.reload();
     }, "2000");
   }
 
 }
-
