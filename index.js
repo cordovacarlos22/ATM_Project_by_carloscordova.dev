@@ -146,7 +146,7 @@ function handleAcountNum(e) {
       // prints the screen
       screen.innerHTML += ` 
       <h1>  ${bankUsers[userIndex].name} su deposito no pudo ser efectuado</h1>
-      <h2>  porque se  balance es de  mayo a $ 990.00  o su cuenta estariapor arriva del deposito mayor a 990</h2>
+      <h2>  porque se  balance es de  mayor a $ 990.00  o su cuenta esta por arriva del deposito mayor a $990</h2>
       `
     } else {
       // if user data bankUser balance!> 990
