@@ -4,8 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
-}
+
 
 .main-container {
   display: flex;
@@ -228,11 +227,11 @@ body {
   }
 
   .header-container {
-    width: 425px;
+    width: 400px;
   }
 
   .main-wrapper-atm {
-    width: 425px;
+    width: 400px;
   }
   
   .atm-main-container {
