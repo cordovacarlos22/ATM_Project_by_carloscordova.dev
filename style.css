@@ -228,11 +228,11 @@ body {
   }
 
   .header-container {
-    width: 525px;
+    width: 425px;
   }
 
   .main-wrapper-atm {
-    width: 525px;
+    width: 425px;
   }
   
   .atm-main-container {
@@ -293,7 +293,11 @@ body {
   }
 
   .card-logo-img{
-    width: 35px;
-    height: 50px;
+   display: none;
   }
+  .cash-logo,
+  .credit-cards{
+    width: 25px;
+  }
+
 }
