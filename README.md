@@ -7,7 +7,7 @@ Goals: to practice DOM manipulation,funtions,conditional,variable,etc in Javascr
 
 ## ATM OBJ TO TEST APP
 
- `Let bankUsers = [
+ ```Let bankUsers = [
   {
     accoutId: '1234',
     name: 'Carlos',
@@ -37,7 +37,7 @@ Goals: to practice DOM manipulation,funtions,conditional,variable,etc in Javascr
     accoutBalance: 60,
   },
 
-]`
+]```
 
 ## 🛠 Skills
 
